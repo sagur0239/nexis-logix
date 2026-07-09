@@ -1,0 +1,169 @@
+{% extends "invApp/layout.html" %}
+
+{% block title %} Product List {% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+  
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+    <div>
+      <div class="mb-2">
+        <a href="javascript:history.back()" class="btn text-info p-0 d-inline-flex align-items-center gap-2 nav-back-link" style="text-decoration: none; transition: all 0.2s ease;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+          </svg>
+          <span class="fw-bold small text-uppercase" style="letter-spacing: 0.5px; font-size: 0.8rem;">Go Back</span>
+        </a>
+      </div>
+      <h1 class="h2 fw-bold text-white mb-1">Products Repository</h1>
+      <p class="text-white-50 mb-0" style="font-size: 0.9rem;">Monitor stock metadata, global SKUs, asset pricing, and live inventory operations.</p>
+    </div>
+    <div>
+      <a href="{% url 'product_create' %}" class="btn text-white fw-bold px-4 py-2.5 rounded-3 border-0 transition-all" 
+         style="background: linear-gradient(135deg, #00e5ff 0%, #6366f1 100%); box-shadow: 0 0 15px rgba(0, 229, 255, 0.25); font-size: 0.9rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg me-1 align-middle" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+        </svg>
+        Add New Product
+      </a>
+    </div>
+  </div>
+
+  <div class="card border-0 rounded-4 shadow-lg overflow-hidden" 
+       style="background: #0b0f19; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;">
+    <div class="table-responsive">
+      <table class="table table-borderless align-middle mb-0 custom-premium-table">
+        <thead>
+          <tr>
+            <th class="ps-4">SL</th> 
+            <th>Product Name</th>
+            <th>SKU Code</th>
+            <th>Price</th>
+            <th>Stock Quantity</th>
+            <th>Supplier Channel</th>
+            <th class="text-end pe-4">Control Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+          <tr>
+            <td class="ps-4">
+              <span class="badge rounded-3 px-2.5 py-1.5 font-monospace text-info" style="background: rgba(0, 229, 255, 0.08); border: 1px solid rgba(0, 229, 255, 0.2);">
+                {{ forloop.counter }}
+              </span>
+            </td>
+            
+            <td>
+              <span class="badge px-3 py-2 fw-bold text-white" style="background: rgba(99, 102, 241, 0.15); border: 1px solid rgba(99, 102, 241, 0.35); color: #818cf8 !important; font-size: 0.92rem; border-radius: 8px;">
+                {{ product.name }}
+              </span>
+            </td>
+            
+            <td>
+              <span class="badge font-monospace px-2.5 py-1.5" style="background: rgba(0, 229, 255, 0.1); border: 1px solid rgba(0, 229, 255, 0.25); color: #00e5ff; font-size: 0.88rem; letter-spacing: 0.5px;">
+                {{ product.sku }}
+              </span>
+            </td>
+            
+            <td class="fw-bold text-success-cyan">${{ product.price }}</td>
+            
+            <td>
+              <span class="fw-bold text-white fs-5 align-middle">{{ product.quantity }}</span>
+              <small class="text-info fw-semibold d-inline-block ms-1" style="font-size: 0.8rem; text-transform: uppercase;">units</small>
+            </td>
+            
+            <td>
+              <span class="badge px-3 py-2 fw-semibold" style="background: rgba(251, 191, 36, 0.1); border: 1px solid rgba(251, 191, 36, 0.3); color: #fbbf24 !important; font-size: 0.88rem; border-radius: 8px;">
+                {{ product.supplier }}
+              </span>
+            </td>
+            
+            <td class="text-end pe-4">
+              <div class="d-inline-flex gap-2">
+                <a href="{% url 'product_update' product.product_id %}" 
+                   class="btn btn-sm btn-action-update px-3 py-1.5 rounded-3 fw-bold" 
+                   style="background-color: #ffb703; color: #000000; font-size: 0.85rem; border: none;">
+                   Edit
+                </a>
+                
+                <a href="{% url 'product_delete' product.product_id %}" 
+                   class="btn btn-sm btn-action-delete px-3 py-1.5 rounded-3 fw-bold text-white" 
+                   style="background-color: #e63946; font-size: 0.85rem; border: none;">
+                   Delete
+                </a>
+              </div>
+            </td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="7" class="text-center py-5 text-white-50">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-inbox text-muted mb-3" viewBox="0 0 16 16">
+                <path d="M4.98 4a.5.5 0 0 0-.39.188L1.54 8H6a.5.5 0 0 1 .5.5 1.5 1.5 0 1 0 3 0A.5.5 0 0 1 10 8h4.46l-3.05-3.812A.5.5 0 0 0 11.02 4zm9.917 4.5H10.5a2.5 2.5 0 0 1-5 0H1.103l-1.624 4.06a1.5 1.5 0 0 0 1.392 2.056h12.258a1.5 1.5 0 0 0 1.392-2.056zM14 3a1.5 1.5 0 0 0-1.5-1h-9A1.5 1.5 0 0 0 2 3v11a1.5 1.5 0 0 0 1.5 1h9a1.5 1.5 0 0 0 1.5-1z"/>
+              </svg>
+              <p class="mb-0">No active products found in your inventory system dashboard.</p>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<style>
+  .nav-back-link:hover {
+    color: #00e5ff !important;
+    transform: translateX(-4px);
+    filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.6));
+  }
+  .custom-premium-table thead tr {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.08) !important;
+  }
+  .custom-premium-table th {
+    color: #e2e8f0 !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.85px;
+    padding-top: 1.3rem !important;
+    padding-bottom: 1.3rem !important;
+  }
+  .custom-premium-table tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    transition: all 0.2s ease-in-out;
+  }
+  .custom-premium-table td {
+    padding-top: 1.2rem !important;
+    padding-bottom: 1.2rem !important;
+  }
+  .text-success-cyan {
+    color: #10b981 !important;
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+  }
+  .custom-premium-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    box-shadow: inset 4px 0 0 #00e5ff !important;
+  }
+  .btn-action-update:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 0 15px rgba(255, 183, 3, 0.4);
+  }
+  .btn-action-delete:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 0 15px rgba(230, 57, 70, 0.4);
+  }
+</style>
+
+<script>
+    // ব্রাউজারের ব্যাক বাটন চাপলে জোর করে পেজ রিফ্রেশ করার স্ক্রিপ্ট
+    (function () {
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        };
+    })();
+</script>
+
+{% endblock %}

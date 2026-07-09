@@ -1,0 +1,65 @@
+<!-- Extend the base layout from the layout.html -->
+{% extends "invApp/layout.html" %}
+
+{% block title %} Delete Product {% endblock title %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6">
+      
+      <!-- Modern Alert/Warning Card -->
+      <div class="card border-0 rounded-4 shadow-lg text-center overflow-hidden position-relative" 
+           style="background: #0b0f19; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;">
+        
+        <!-- Red/Danger Top Gradient Line -->
+        <div style="height: 5px; background: linear-gradient(90deg, #ef4444, #b91c1c);"></div>
+        
+        <div class="card-body p-5">
+          
+          <!-- Warning Icon with Glowing Effect -->
+          <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-4" 
+               style="width: 70px; height: 70px; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ef4444" class="bi bi-exclamation-triangle-fill animate-bounce" viewBox="0 0 16 16">
+              <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+            </svg>
+          </div>
+
+          <!-- Heading & Subtext -->
+          <h2 class="h4 fw-bold text-white mb-2">Confirm Destruction</h2>
+          <p class="text-white-50 mb-5 px-3" style="font-size: 0.95rem; font-weight: 300;">
+            Are you sure you want to permanently delete this product? This action cannot be undone.
+          </p>
+
+          <!-- Form Control & Interactive Buttons -->
+          <form method="post" class="d-flex flex-column flex-sm-row justify-content-center gap-3 px-3">
+            {% csrf_token %}
+            
+            <!-- Cancel Button (Left Side) -->
+            <a href="{% url 'product_list' %}" class="btn btn-lg px-4 py-2.5 fw-semibold rounded-3 text-white order-2 order-sm-1" 
+               style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.95rem; transition: all 0.2s;">
+              Cancel, Keep It
+            </a>
+
+            <!-- Confirm Delete Button (Right Side) -->
+            <button type="submit" class="btn btn-danger btn-lg px-4 py-2.5 fw-bold rounded-3 order-1 order-sm-2 btn-delete-glow" 
+                    style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border: 0; font-size: 0.95rem; transition: all 0.2s;">
+              Yes, Delete Product
+            </button>
+          </form>    
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Extra CSS for Delete Hover Effect -->
+<style>
+  .btn-delete-glow:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.4) !important;
+  }
+</style>
+{% endblock content %}

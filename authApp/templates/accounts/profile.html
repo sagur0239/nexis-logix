@@ -1,0 +1,99 @@
+{% extends "invApp/layout.html" %}
+
+{% block title %} User Profile {% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow border-0 text-center py-4" style="background: rgba(11, 15, 25, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px;">
+                <div class="card-body">
+                    <div class="position-relative d-inline-block mb-3">
+                        <img src="{{ user.profile.image.url }}" alt="Profile Image" class="rounded-circle img-thumbnail" style="width: 130px; height: 130px; object-fit: cover; border: 2px solid #00e5ff; background: transparent;">
+                    </div>
+                    <h4 class="fw-bold text-white mb-1">{{ user.username }}</h4>
+                    <p class="text-info small mb-3">{{ user.email }}</p>
+                    
+                    <hr style="border-color: rgba(255, 255, 255, 0.1);">
+                    
+                    <div class="text-start px-3">
+                        <h6 class="text-white-50 fw-bold small text-uppercase mb-2">My Bio</h6>
+                        <p class="text-light small bg-dark p-3 rounded-3 border" style="border-color: rgba(255, 255, 255, 0.08) !important; min-height: 80px; background-color: rgba(0,0,0,0.2) !important;">
+                            {% if user.profile.bio %}
+                                {{ user.profile.bio }}
+                            {% else %}
+                                <span class="text-muted italic">No bio added yet. Add your bio using the form.</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card shadow border-0 p-4" style="background: rgba(11, 15, 25, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px;">
+                <h4 class="fw-bold text-white mb-4" style="letter-spacing: -0.5px;">Update Profile Info</h4>
+                
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="id_username" class="form-label fw-semibold text-info small">Username</label>
+                        <input type="text" name="username" value="{{ u_form.username.value|default:'' }}" class="form-control bg-dark text-white border-secondary custom-input" id="id_username" required placeholder="Enter username">
+                        {% if u_form.username.errors %}
+                            <div class="text-danger small mt-1">{{ u_form.username.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label fw-semibold text-info small">Email Address</label>
+                        <input type="email" name="email" value="{{ u_form.email.value|default:'' }}" class="form-control bg-dark text-white border-secondary custom-input" id="id_email" required placeholder="Enter email">
+                        {% if u_form.email.errors %}
+                            <div class="text-danger small mt-1">{{ u_form.email.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_bio" class="form-label fw-semibold text-info small">About / Bio</label>
+                        <textarea name="bio" cols="40" rows="4" class="form-control bg-dark text-white border-secondary custom-input" id="id_bio" placeholder="Write something beautiful about yourself...">{{ p_form.bio.value|default:'' }}</textarea>
+                        {% if p_form.bio.errors %}
+                            <div class="text-danger small mt-1">{{ p_form.bio.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="id_image" class="form-label fw-semibold text-info small">Change Profile Picture</label>
+                        <input type="file" name="image" accept="image/*" class="form-control bg-dark text-white border-secondary custom-input" id="id_image">
+                        {% if p_form.image.errors %}
+                            <div class="text-danger small mt-1">{{ p_form.image.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="btn btn-info w-100 fw-bold text-dark py-2" style="border-radius: 8px; background: linear-gradient(135deg, #00e5ff 0%, #00b0ff 100%); border: none;">
+                        Save Changes
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .custom-input {
+        background-color: rgba(6, 9, 19, 0.6) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 8px;
+        padding: 10px 14px;
+        transition: all 0.2s ease;
+    }
+    .custom-input:focus {
+        background-color: rgba(6, 9, 19, 0.9) !important;
+        border-color: #00e5ff !important;
+        color: #ffffff !important;
+        box-shadow: 0 0 8px rgba(0, 229, 255, 0.25) !important;
+    }
+    .custom-input::placeholder {
+        color: rgba(255, 255, 255, 0.3) !important;
+    }
+</style>
+{% endblock %}

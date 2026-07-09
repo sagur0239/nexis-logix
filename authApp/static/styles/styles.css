@@ -1,0 +1,133 @@
+/* Custom Properties/Variables for Elite Cyber Theme */
+:root {
+    --bg-deep: #060913;          /* Deep Cyber Dark Background */
+    --card-dark: #0b0f19;        /* Premium Card Base */
+    --border-glass: rgba(255, 255, 255, 0.06);
+    --text-main: #f8fafc;        /* Off-White Text */
+    --text-muted: #94a3b8;       /* Slate Muted Text */
+    --neon-cyan: #00e5ff;        /* Neon Cyan Accent */
+    --neon-indigo: #6366f1;      /* Indigo Accent */
+}
+
+/* Global Body Reset & Alignment */
+body {
+    font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+    background-color: var(--bg-deep) !important;
+    background: var(--bg-deep) !important;
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Premium Dark Card Container (No White Boxes) */
+.container {
+    background-color: var(--card-dark) !important;
+    background: var(--card-dark) !important;
+    width: 100%;
+    max-width: 440px;
+    padding: 40px !important;
+    border: 1px solid var(--border-glass) !important; /* Replacing old heavy borders with sleek glass border */
+    border-radius: 16px !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Elite Top Accent Decorative Line (Automatically appears at the top of the container) */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--neon-cyan) 0%, var(--neon-indigo) 100%);
+}
+
+/* Header Typography */
+h2 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-top: 0;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+    text-align: center;
+}
+
+/* Form Layout Elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Premium Dark Input Controls for Text & Password */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 11px 16px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--text-main) !important;
+    background-color: rgba(255, 255, 255, 0.02) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 10px !important;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Input Focus Glow Micro-interactions */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none !important;
+    border-color: var(--neon-cyan) !important;
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.2) !important;
+}
+
+/* High-Tech Glowing Action Button */
+button {
+    width: 100%; /* Spans full width for a modern enterprise layout */
+    background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-indigo) 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    border-radius: 10px !important;
+    transition: all 0.25s ease-in-out;
+}
+
+/* Button Hover Reaction */
+button:hover {
+    filter: brightness(1.1);
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.35) !important;
+}
+
+/* Clean Professional Alert Box instead of just raw red text */
+.error {
+    color: #f87171 !important;
+    background: rgba(239, 68, 68, 0.08) !important;
+    border: 1px solid rgba(239, 68, 68, 0.15) !important;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}

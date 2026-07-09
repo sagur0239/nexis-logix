@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protected Space | Inventory App</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+
+    <style>
+        /* Extra Micro-Styling for Protected Page elements */
+        .secure-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .protected-text {
+            color: #94a3b8;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            text-align: justify;
+            background: rgba(255, 255, 255, 0.01);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            margin-bottom: 25px;
+        }
+
+        .btn-home-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #00e5ff 0%, #6366f1 100%) !important;
+            color: #ffffff !important;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            transition: all 0.25s ease-in-out;
+        }
+
+        .btn-home-nav:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.35) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="text-center">
+            <span class="secure-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16">
+                  <path d="M5.338 1.59a61 61 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 4.284 3.583c.242.088.494.088.736 0a10.7 10.7 0 0 0 4.284-3.583c1.527-1.999 2.807-5.03 2.253-9.188a.48.48 0 0 0-.328-.39c-.656-.242-1.712-.6-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.745-2.783 9.854a11.5 11.5 0 0 1-5.517 3.113 11.5 11.5 0 0 1-5.517-3.113C1.157 12.078-.226 8.81.37 4.334a1.54 1.54 0 0 1 1.044-1.263c.658-.215 1.777-.57 2.887-.87z"/>
+                  <path d="M10.854 6.146a.5.5 0 0 0-.708-.708L7.5 8.293 6.354 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
+                </svg>
+                Secure Area
+            </span>
+            <h2>Protected Area</h2>
+        </div>
+
+        <div class="protected-text">
+            {{ lorem }} Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim facilis provident eaque delectus, illum vitae cumque distinctio consequatur tenetur sint voluptates adipisci nemo soluta vero quos temporibus repellat? Exercitationem, porro.
+        </div>
+
+        <a href="{% url 'home' %}" class="btn-home-nav">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
+            </svg>
+            Return to Dashboard
+        </a>
+    </div>
+
+</body>
+</html>

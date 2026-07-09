@@ -1,0 +1,77 @@
+{% extends "invApp/layout.html" %}
+
+{% block title %} Manage Product {% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  
+  <!-- ১. প্রোডাক্ট লিস্ট পেজে ফিরে যাওয়ার আইকন বাটন -->
+  <div class="mb-4">
+    <a href="{% url 'product_list' %}" class="btn text-info p-0 d-inline-flex align-items-center gap-2 nav-back-link" style="text-decoration: none; transition: all 0.2s ease;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0m3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+      </svg>
+      <span class="fw-bold small text-uppercase" style="letter-spacing: 0.5px;">Back to Product List</span>
+    </a>
+  </div>
+
+  <!-- ২. আপনার মেইন ফর্ম কার্ড (ডার্ক গ্লাস থিম) -->
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow border-0 p-4" style="background: rgba(11, 15, 25, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px;">
+        
+        <!-- ডাইনামিক হেডিং (ক্রিয়েট নাকি আপডেট সেটা নিজে নিজেই বুঝে নেবে) -->
+        <h3 class="fw-bold text-white mb-4">
+          {% if form.instance.pk %} Update Product {% else %} Add New Product {% endif %}
+        </h3>
+        
+        <form method="POST">
+          {% csrf_token %}
+          
+          <!-- আপনার জ্যাঙ্গো ডিফল্ট ফর্ম বা বুটস্ট্র্যাপ ক্রিস্পি ফর্ম -->
+          <div class="text-white custom-form-fields mb-4">
+            {{ form.as_p }}
+          </div>
+          
+          <button type="submit" class="btn btn-info w-100 fw-bold text-dark py-2.5 rounded-3" style="background: linear-gradient(135deg, #00e5ff 0%, #00b0ff 100%); border: none;">
+            Save Product Data
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ৩. ব্যাক বাটনের মাইক্রো ইন্টারঅ্যাকশন এবং ফর্ম ইনপুট স্টাইল -->
+<style>
+  .nav-back-link:hover {
+    color: #00e5ff !important;
+    transform: translateX(-4px);
+    filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.6));
+  }
+  
+  /* ফর্মের ভেতরের ডিফল্ট ইনপুট ফিল্ডগুলো যাতে ডার্ক মোডে সুন্দর ও স্পষ্ট দেখায় */
+  .custom-form-fields input, 
+  .custom-form-fields textarea, 
+  .custom-form-fields select {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ffffff !important;
+    background-color: rgba(6, 9, 19, 0.6) !important;
+    background-clip: padding-box;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+  }
+  .custom-form-fields input:focus {
+    border-color: #00e5ff !important;
+    outline: 0;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.25) !important;
+  }
+</style>
+{% endblock %}

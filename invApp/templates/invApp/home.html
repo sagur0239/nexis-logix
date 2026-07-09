@@ -1,0 +1,120 @@
+<!-- Extend the base layout from the layout.html -->
+{% extends "invApp/layout.html" %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-xl-9 col-lg-10">
+      
+      <!-- Ultra-Modern High-Tech Container -->
+      <div class="card border-0 rounded-5 shadow-lg position-relative overflow-hidden" 
+           style="background: #0b0f19; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4) !important;">
+        
+        <!-- Ambient Light Top-Right (Neon Glow Effect) -->
+        <div class="position-absolute" style="width: 300px; height: 300px; background: radial-gradient(circle, rgba(0,229,255,0.15) 0%, rgba(0,0,0,0) 70%); top: -100px; right: -100px; pointer-events: none;"></div>
+        <!-- Ambient Light Bottom-Left -->
+        <div class="position-absolute" style="width: 300px; height: 300px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(0,0,0,0) 70%); bottom: -100px; left: -100px; pointer-events: none;"></div>
+
+        <div class="card-body p-5 text-center position-relative" style="z-index: 1;">
+          
+          <!-- Top Tech Badge -->
+          <div class="d-inline-flex align-items-center gap-2 px-3 py-1.5 rounded-pill mb-4" 
+               style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);">
+            <span class="d-inline-block bg-info rounded-circle animate-pulse" style="width: 6px; height: 6px; box-shadow: 0 0 10px #00e5ff;"></span>
+            <small class="text-white-50 fw-semibold tracking-wider text-uppercase" style="font-size: 0.75rem;">Enterprise Core v2.4</small>
+          </div>
+
+          <!-- Main Futuristic Title -->
+          <h1 class="display-4 fw-black text-white mb-3 tracking-tight">
+            Inventory <span style="background: linear-gradient(135deg, #00e5ff 0%, #6366f1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Intelligence</span>
+          </h1>
+          
+          <p class="text-white-50 mx-auto mb-5 fs-5" style="max-width: 600px; font-weight: 300; line-height: 1.6;">
+            Take total control of your business stock levels, product lifecycles, and data analytics from a single, centralized architecture.
+          </p>
+
+          <!-- Interactive Action Grid (Features) -->
+          <div class="row g-3 justify-content-center mb-5 text-start">
+            
+            <div class="col-md-4">
+              <div class="p-3 h-100 rounded-4" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                <div class="text-info mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-lightning" viewBox="0 0 16 16">
+                    <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641z"/>
+                  </svg>
+                </div>
+                <h6 class="text-white fw-bold mb-1" style="font-size: 0.9rem;">Real-time Dynamic</h6>
+                <p class="text-white-50 mb-0" style="font-size: 0.8rem; font-weight: 300;">Experience instant data synchronization and seamless auto-reload performance.</p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="p-3 h-100 rounded-4" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                <div class="text-warning mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-layers" viewBox="0 0 16 16">
+                    <path d="M8.235 1.559a.5.5 0 0 0-.47 0L1.42 5.03a.5.5 0 0 0 0 .894l6.345 3.47a.5.5 0 0 0 .47 0l6.345-3.47a.5.5 0 0 0 0-.894z"/>
+                    <path d="m14.215 8.267-6.345 3.47a.5.5 0 0 1-.47 0L1.062 8.267a.5.5 0 0 0-.472.894l6.34 3.47a.5.5 0 0 0 .472 0l6.34-3.47a.5.5 0 0 0-.472-.894"/>
+                  </svg>
+                </div>
+                <h6 class="text-white fw-bold mb-1" style="font-size: 0.9rem;">Full CRUD Stack</h6>
+                <p class="text-white-50 mb-0" style="font-size: 0.8rem; font-weight: 300;">Easily add, view, update, and delete products via the management interface.</p>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="p-3 h-100 rounded-4" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                <div class="text-success mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16">
+                    <path d="M5.338 1.59a61 61 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.244.998 0A10.7 10.7 0 0 0 12 12.024c1.527-2 2.808-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.656-.213-1.6-.496-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.77 11.77 0 0 1-2.517 2.453 1.93 1.93 0 0 1-2.186 0 11.77 11.77 0 0 1-2.517-2.453C1.328 10.087-.055 6.769.54 2.292A1.54 1.54 0 0 1 1.584 1.03c.658-.214 1.778-.569 2.887-.87z"/>
+                  </svg>
+                </div>
+                <h6 class="text-white fw-bold mb-1" style="font-size: 0.9rem;">Secure Sessions</h6>
+                <p class="text-white-50 mb-0" style="font-size: 0.8rem; font-weight: 300;">Fully fortified and protected by robust Django security infrastructure frameworks.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Futuristic Neon CTA Button -->
+          <div class="pt-2">
+            <a href="{% url 'product_list' %}" class="btn text-white btn-lg px-5 py-3 fw-bold rounded-4 border-0 position-relative transition-all dashboard-btn" 
+               style="background: linear-gradient(135deg, #00e5ff 0%, #6366f1 100%); box-shadow: 0 0 25px rgba(0, 229, 255, 0.35); font-size: 1.05rem; letter-spacing: 0.5px;">
+              Launch Dashboard
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-arrow-right-short ms-2 align-middle" viewBox="0 0 16 16" style="transition: transform 0.2s;">
+                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"/>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Extra subtle CSS injected safely for the pulse effect -->
+<style>
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .4; transform: scale(1.1); }
+  }
+  .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+  .dashboard-btn:hover svg { transform: translateX(5px); }
+  .dashboard-btn:hover { filter: brightness(1.1); box-shadow: 0 0 35px rgba(0, 229, 255, 0.5) !important; }
+</style>
+
+<script>
+    // ব্রাউজারের ব্যাক বাটন চাপলে জোর করে পেজ রিফ্রেশ করার স্ক্রিপ্ট
+    (function () {
+        window.onpageshow = function(event) {
+            if (event.persisted) {
+                window.location.reload();
+            }
+        };
+    })();
+</script>
+
+{% endblock %}

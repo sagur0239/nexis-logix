@@ -1,0 +1,113 @@
+{% load static %}  
+<!DOCTYPE html>  
+<html lang="en" style="background-color: #060913 !important;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout | Inventory App</title> 
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">  
+
+    <style>
+        /* Force full layout to match the login page cyber-dark theme */
+        html, body {
+            background-color: #060913 !important;
+            background: #060913 !important;
+            min-height: 100vh !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px !important;
+        }
+
+        /* Clean Premium Center Card Container (No White Boxes) */
+        .auth-card {
+            background-color: #0b0f19 !important;
+            background: #0b0f19 !important;
+            border: 1px solid rgba(255, 255, 255, 0.06) !important;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
+            border-radius: 16px !important;
+        }
+
+        /* Hover animations for buttons */
+        .btn-glow:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.35) !important; /* Soft Red Glow for Logout */
+        }
+
+        .btn-secondary-custom {
+            background-color: rgba(255, 255, 255, 0.03) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            color: #94a3b8 !important;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .btn-secondary-custom:hover {
+            background-color: rgba(255, 255, 255, 0.08) !important;
+            color: #f8fafc !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="w-100 d-flex justify-content-center align-items-center" style="background: transparent !important;"> 
+        <div class="card auth-card w-100 overflow-hidden" style="max-width: 420px;">
+            
+            <div style="height: 5px; background: linear-gradient(90deg, #ef4444 0%, #6366f1 100%);"></div>
+            
+            <div class="card-body p-5 text-center">
+                
+                <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-4" 
+                     style="width: 64px; height: 64px; background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.18);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#ef4444" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                      <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                    </svg>
+                </div>
+
+                <h2 class="h4 fw-bold text-white mb-2" style="letter-spacing: -0.5px;">Confirm Logout</h2>  
+                <p class="text-white-50 mb-4" style="font-size: 0.92rem; line-height: 1.5;">Are you sure you want to log out of your session? You will need to log back in to access the system.</p>
+
+                <form method="POST" action="{% url 'logout' %}" class="d-flex flex-column gap-2">  
+                    {% csrf_token %}  
+                    
+                    <button type="submit" class="btn btn-glow text-white fw-bold py-2.5 rounded-3 border-0 transition-all"
+                            style="background: linear-gradient(135deg, #ef4444 0%, #ca8a04 100%); font-size: 0.95rem; letter-spacing: 0.3px;">
+                        Yes, Logout
+                    </button> 
+                    
+                    <a href="{% url 'home' %}" class="btn btn-secondary-custom fw-semibold py-2.5 rounded-3 mt-1 text-decoration-none d-flex align-items-center justify-content-center" style="font-size: 0.95rem;">
+                        Cancel & Stay
+                    </a>
+                </form> 
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript">
+        function preventBack() {
+            window.history.forward();
+        }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+    </script>
+</body>
+</html>

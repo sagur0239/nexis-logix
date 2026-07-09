@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Inventory App</title>
+    
+    <!-- Modern Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Link to your updated styles.css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/styles.css' %}">
+
+    <style>
+        /* Extra Micro-Styling for Dashboard Elements */
+        .welcome-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .user-badge {
+            color: #00e5ff;
+            font-weight: 700;
+            background: rgba(0, 229, 255, 0.1);
+            padding: 3px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 229, 255, 0.15);
+        }
+
+        .btn-protected {
+            display: block;
+            text-align: center;
+            background: rgba(99, 102, 241, 0.08);
+            color: #6366f1 !important;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 15px;
+            transition: all 0.25s ease-in-out;
+            font-size: 0.95rem;
+        }
+
+        .btn-protected:hover {
+            background: #6366f1;
+            color: #ffffff !important;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.35);
+        }
+
+        .logout-form {
+            width: 100%;
+        }
+
+        .btn-logout {
+            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%) !important;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
+        }
+
+        .btn-logout:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.35) !important;
+        }
+
+        .brand-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.18);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Brand/Dashboard Icon -->
+        <div class="text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <div class="brand-icon" style="display: flex; align-items: center; justify-content: center; border-radius: 50%; margin-bottom: 12px;">
+                <!-- Modern Inventory/Grid Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#00e5ff" class="bi bi-grid-1x2-fill" viewBox="0 0 16 16">
+                    <path d="M0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1zm0 9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1"/>
+                </svg>
+            </div>
+            <h2>Dashboard</h2>
+        </div>
+
+        <!-- Welcome Panel -->
+        <div class="welcome-box">
+            <p style="margin: 0; color: #94a3b8; font-size: 0.95rem;">
+                Welcome back, <span class="user-badge">{{ request.user.username }}</span>
+            </p>
+        </div>
+
+        <!-- Navigation Links -->
+        <div style="margin-bottom: 10px;">
+            <a href="{% url 'protected' %}" class="btn-protected">
+                Go To Your Protected Page!
+            </a>
+        </div>
+
+        <!-- Action Operations (Logout) -->
+        <form action="{% url 'logout' %}" method="post" class="logout-form">
+            {% csrf_token %}
+            <button type="submit" class="btn-logout">Logout</button>
+        </form>
+    </div>
+
+</body>
+</html>
