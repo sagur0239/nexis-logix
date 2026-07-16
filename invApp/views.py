@@ -31,13 +31,16 @@ def profile_view(request):
     }
     return render(request, 'accounts/profile.html', context)
 
+# Home View
 @login_required
 @never_cache
-# Home View
 def home(request):
     return render(request, 'invApp/home.html')
 
+
 # Create View
+@login_required
+@never_cache
 def product_create_view(request):
     form = ProductForm()
     if request.method == 'POST':
@@ -47,12 +50,17 @@ def product_create_view(request):
             return redirect('product_list')
     return render(request, 'invApp/product_form.html', {'form':form})
 
+
 # Read View
+@login_required
+@never_cache
 def product_list_view(request):
     products = Product.objects.all()
     return render(request, 'invApp/product_list.html', {'products':products})
 
 # Update View
+@login_required
+@never_cache
 def product_update_view(request, product_id):
     product = Product.objects.get(product_id=product_id)
     form = ProductForm()
@@ -64,6 +72,8 @@ def product_update_view(request, product_id):
     return render(request, 'invApp/product_form.html', {'form':form})
 
 # Delete View
+@login_required
+@never_cache
 def product_delete_view(request, product_id):
     product = Product.objects.get(product_id = product_id)
     if request.method == 'POST':
@@ -73,12 +83,14 @@ def product_delete_view(request, product_id):
 
 
 @login_required
+@never_cache
 def product_list(request):
     # আপনার আগের কোড...
     return render(request, 'invApp/product_list.html')
 
 # ২. প্রোডাক্ট ফর্ম বা ক্রিয়েট ভিউ লক করুন 👇
 @login_required
+@never_cache
 def product_create(request):
     # your code...
     pass

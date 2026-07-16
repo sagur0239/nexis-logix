@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV '/home/md-sagur-ali/Desktop/NIIST Final Project/FinalProject/Inventory Management System/venv'
+set -gx VIRTUAL_ENV /home/md-sagur-ali/Documents/nexis-logix/venv
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

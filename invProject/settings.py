@@ -23,12 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-aw1ga7$)o+8nar80bnu&o2rl2cvs4^0zo&m$ein$(aqxbia81r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'nexis-logix.onrender.com',
+    '127.0.0.1',
+    'localhost',
 ]
-
 
 # Application definition
 
