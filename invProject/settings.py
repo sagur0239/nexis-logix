@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'authApp', 
     'crispy_forms',
     'crispy_bootstrap5',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -154,3 +156,12 @@ LOGOUT_REDIRECT_URL = 'login'
 
 # কেউ লগইন না করে ভেতরে ঢোকার চেষ্টা করলে এই পেজে আটকে দেবে
 LOGIN_URL = 'login'
+
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
