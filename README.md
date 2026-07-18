@@ -71,7 +71,7 @@ The application supports secure authentication, cloud-based profile image storag
 * 📱 Fully Responsive User Interface
 * ☁️ Cloudinary Media Storage
 * 🐘 PostgreSQL Database Integration
-* 🚀 Production Deployment on Render
+* 📦 Production Deployment on Render
 * 🔒 CSRF Protection & Secure Authentication
 
 ---
@@ -184,7 +184,7 @@ http://127.0.0.1:8000/
 
 ---
 
-# 🚀 Deployment
+# 📦 Deployment
 
 The application is successfully deployed using:
 
