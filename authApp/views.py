@@ -85,10 +85,6 @@ class ProtectedView(LoginRequiredMixin, View):
     
 @login_required
 def profile_view(request):
-    return render(request, 'accounts/profile.html')
-
-@login_required
-def profile_view(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
